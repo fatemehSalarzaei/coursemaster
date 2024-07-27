@@ -1,2 +1,13 @@
 # coursemaster
-A comprehensive course management system developed using Django. Features include course creation, editing, and deletion, student enrollment management, session scheduling, progress tracking, and notification sending. Designed to help educational institutions efficiently manage courses and enhance the student learning experience.
+
+A Course Management System Using Django
+
+This project is a comprehensive system for managing educational courses, developed using the Django framework. The features of this system include:
+
+- Creating, editing, and deleting courses
+- Managing student enrollments
+- Scheduling sessions and classes
+- Tracking student progress
+- Sending notifications and messages
+
+This system helps educational institutions efficiently and systematically manage their courses, providing a better educational experience for students.
