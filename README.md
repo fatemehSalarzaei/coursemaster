@@ -1,3 +1,10 @@
+## Technologies Used
+
+- **Programming Languages**: Python, JavaScript
+- **Frameworks**: Django, React
+- **Databases**: PostgreSQL
+- **Tools**: Docker, GitHub Actions
+- 
 # coursemaster
 
 A Course Management System Using Django
