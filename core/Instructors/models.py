@@ -39,14 +39,7 @@ class InstructorSpecialization(models.Model):
     def __str__(self):
         return f"{self.instructor.user.get_full_name()} - {self.specialization.name} - Proficiency: {self.proficiency}, Level: {self.level}"
 
-class EducationalBackground(models.Model):
-    instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE, related_name='educational_backgrounds')
-    institution_name = models.CharField(max_length=255)
-    degree = models.CharField(max_length=255)
-    graduation_year = models.PositiveIntegerField()
 
-    def __str__(self):
-        return f"{self.instructor.user.get_full_name()} - {self.degree} at {self.institution_name}"
 
 class ProfessionalBackground(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE, related_name='professional_backgrounds')

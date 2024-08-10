@@ -49,3 +49,13 @@ class CustomUser(AbstractBaseUser):
 
     def get_short_name(self):
         return self.first_name
+
+
+class EducationalBackground(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='educational_backgrounds')
+    institution_name = models.CharField(max_length=255)
+    degree = models.CharField(max_length=255)
+    graduation_year = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.user.get_full_name()} - {self.degree} at {self.institution_name}"
