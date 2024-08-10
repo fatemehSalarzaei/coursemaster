@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Instructor, Specialization, InstructorSpecialization, EducationalBackground, ProfessionalBackground
+from .models import Instructor, Specialization, InstructorSpecialization, ProfessionalBackground
 
 @admin.register(Specialization)
 class SpecializationAdmin(admin.ModelAdmin):
@@ -20,11 +20,6 @@ class InstructorSpecializationAdmin(admin.ModelAdmin):
     search_fields = ('instructor__user__email', 'specialization__name')
     list_filter = ('level', 'proficiency')
 
-@admin.register(EducationalBackground)
-class EducationalBackgroundAdmin(admin.ModelAdmin):
-    list_display = ('instructor', 'institution_name', 'degree', 'graduation_year')
-    search_fields = ('instructor__user__email', 'institution_name', 'degree')
-    list_filter = ('graduation_year',)
 
 @admin.register(ProfessionalBackground)
 class ProfessionalBackgroundAdmin(admin.ModelAdmin):

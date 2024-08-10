@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'Grades',
     'Reports',
     'Notifications',
+    'Payments', 
 
 ]
 
@@ -137,4 +138,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'yourapp.CustomUser'
+AUTH_USER_MODEL = 'Authentication.CustomUser'

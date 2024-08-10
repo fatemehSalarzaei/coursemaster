@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import CustomUser
+from .models import CustomUser , EducationalBackground
 
 class UserAdmin(BaseUserAdmin):
     model = CustomUser
@@ -22,3 +22,11 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
 
 admin.site.register(CustomUser, UserAdmin)
+
+
+
+@admin.register(EducationalBackground)
+class EducationalBackgroundAdmin(admin.ModelAdmin):
+    list_display = ('user', 'institution_name', 'degree', 'graduation_year')
+    search_fields = ('user__email', 'institution_name', 'degree')
+    list_filter = ('graduation_year',)

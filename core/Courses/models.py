@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from Courses.models import Instructor
+from Instructors.models import Instructor
 
 
 class Category(models.Model):
