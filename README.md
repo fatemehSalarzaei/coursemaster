@@ -36,12 +36,12 @@ The Course Master project has different apps to manage different aspects of the 
 
 6. Notifications:
    - For sending notifications and messages to students and instructors.
+     
+7. Payments:
+   - Manages payment transactions and invoices related to course enrollments, including tracking payment status and generating financial records.
 
-7. Assignments:
-   - For managing assignments, submissions, and evaluations.
-
-8. Grades:
-   - For recording and managing student grades across various courses.
+8. Assignments:
+   - Handles exam-related functionalities, including managing and tracking assignments, if needed, for assessments and exams.
 
 9. Reports:
    - For generating various reports on student performance, instructor activities, and course details.
