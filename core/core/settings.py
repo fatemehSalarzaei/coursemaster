@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'Sessions',
     'Enrollments',
     'Assignments',
-    'Grades',
     'Reports',
     'Notifications',
     'Payments', 
