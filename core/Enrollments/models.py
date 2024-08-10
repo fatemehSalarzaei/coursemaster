@@ -6,18 +6,24 @@ from Courses.models import Course
 
 class Enrollment(models.Model):
     STATUS_CHOICES = [
-        ('Enrolled', 'Enrolled'),  # ثبت‌نام شده
-        ('Completed', 'Completed'),  # اتمام یافته
-        ('Withdrawn', 'Withdrawn'),  # انصراف داده شده
-        ('Dropped', 'Dropped'),  # حذف شده
+        ('Enrolled', 'Enrolled'),  
+        ('Completed', 'Completed'),  
+        ('Withdrawn', 'Withdrawn'), 
+        ('Dropped', 'Dropped'),  
     ]
 
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='enrollments')  # دانشجو
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='enrollments')  # دوره
-    enrollment_date = models.DateField(default=timezone.now)  # تاریخ ثبت‌نام
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Enrolled')  # وضعیت ثبت‌نام
-    progress = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)  # پیشرفت در دوره به درصد
-    final_grade = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)  # نمره نهایی
+    PAYMENT_STATUS_CHOICES = [
+        ('Pending', 'Pending'),       
+        ('Paid', 'Paid'),               
+        ('Failed', 'Failed'),           
+    ]
 
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='enrollments') 
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='enrollments')  
+    enrollment_date = models.DateField(default=timezone.now)  
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Enrolled')  
+    payment_status = models.CharField(max_length=20, choices=PAYMENT_STATUS_CHOICES, default='Pending')  
+    progress = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)  
+    final_grade = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)  
     def __str__(self):
         return f"{self.student.user.get_full_name()} - {self.course.title} ({self.status})"
