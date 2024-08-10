@@ -12,4 +12,4 @@ class InstructorNotificationAdmin(admin.ModelAdmin):
     search_fields = ('message', 'course__title', 'specific_student__username')
 
 admin.site.register(Notification, NotificationAdmin)
-admin.site.register(Notification, InstructorNotificationAdmin)
+admin.site.register(InstructorNotification, InstructorNotificationAdmin)

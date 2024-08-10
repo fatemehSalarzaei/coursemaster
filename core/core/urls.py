@@ -25,7 +25,6 @@ urlpatterns = [
     path('api/sessions/', include(('Sessions.urls' , 'Sessions' ), namespace='sessions')),
     path('api/enrollments/', include(('Enrollments.urls' ,'Enrollments'), namespace='enrollments')),
     path('api/assignments/', include(('Assignments.urls' , 'Assignments' ), namespace='assignments')),
-    path('api/grades/', include(('Grades.urls' , 'Grades' ), namespace='grades')),
     path('api/reports/', include(('Reports.urls' , 'Reports' ) , namespace='reports')),
     path('api/notifications/', include(('Notifications.urls', 'Notifications'), namespace='notifications')),
 
