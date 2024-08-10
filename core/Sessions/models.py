@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 from Courses.models import Course
+from Enrollments.models import Enrollment
 
 class Session(models.Model):
     STATUS_CHOICES = [
@@ -23,3 +24,28 @@ class Session(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Scheduled')  
     def __str__(self):
         return f"{self.title} - {self.course.title}"
+
+from django.db import models
+
+class Attendance(models.Model):
+    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    status = models.CharField(max_length=10, choices=[
+        ('present', 'Present'),
+        ('absent', 'Absent'),
+        ('late', 'Late'),
+        ('excused', 'Excused'),
+    ])
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.enrollment.student} - {self.session} - {self.status}"
+    
+class Feedback(models.Model):
+    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
+    comment = models.TextField()
+    rating = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.enrollment.student} - {self.session} - Rating: {self.rating}"
