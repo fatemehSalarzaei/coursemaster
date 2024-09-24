@@ -25,19 +25,32 @@ SECRET_KEY = 'django-insecure-+51b%)5-!xe#_d_h4@a#bio07s8m1yv8bo%=5buo1&4wv17%uz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#  Specify the site ID
+SITE_ID = 1
+
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
+INSTALLED_APPS = [ 
+   'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+    'rest_framework.authtoken',
 
     # apps 
     'Authentication' , 
@@ -53,6 +66,20 @@ INSTALLED_APPS = [
 
 ]
 
+
+
+# REST framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,7 +88,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # اضافه کردن این خط
 ]
+
 
 ROOT_URLCONF = 'core.urls'
 
@@ -138,3 +167,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'Authentication.CustomUser'
+
+
+# Google OAuth configuration
+SOCIALACCOUNT_PROVIDERS = {
+       'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'APP': {
+            'client_id': "768053356132-f76o99cr6d07nshi5iq0ktolagu6li8j.apps.googleusercontent.com" ,
+            'secret': "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",
+            'key': ''
+        }
+    }
+}
+
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+LOGIN_REDIRECT_URL = '/'
